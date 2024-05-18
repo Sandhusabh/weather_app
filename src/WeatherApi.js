@@ -4,7 +4,7 @@ class WeatherApi {
   async callApi(req) {
     try {
       let response = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${req.api_key}&q=${req.location}`
+        `https://api.weatherapi.com/v1/current.json?key=${req.nothing}&q=${req.location}`
       );
 
       if (!response.ok) {
@@ -20,8 +20,8 @@ class WeatherApi {
   }
 
   async getData(location) {
-    const api_key = "ffba2972a8024ab081765340240405";
-    const req = { api_key, location };
+    const nothing = "ffba2972a8024ab081765340240405";
+    const req = { nothing, location };
     const weatherData = await this.callApi(req);
     return weatherData;
   }
