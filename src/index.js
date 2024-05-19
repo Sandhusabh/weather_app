@@ -1,7 +1,7 @@
 import WeatherApi from "./WeatherApi";
 import DisplayLocation from "./DisplayLocation";
 import "./style.css";
-
+import "./style.scss"
 class WeatherApp {
   constructor() {
     this.locations = ["Abbotsford, BC", "Surrey", "Surrey", "Surrey", "Makhu"];
@@ -29,16 +29,15 @@ class WeatherApp {
 
   displayData(weatherData) {
     const contentArea = document.getElementById("content");
-    const mainCityContainer = document.getElementById("mainCityContainer");
-    contentArea.innerText = "";
-    mainCityContainer.innerText = "";
+    // const mainCityContainer = document.getElementById("mainCityContainer");
+    contentArea.innerText = ""; 
     weatherData.forEach((Obj) => {
-      const loc = new DisplayLocation(Obj);
-      if (Obj.obj_index === 4) {
-        mainCityContainer.appendChild(loc.display());
-      } else {
-        contentArea.appendChild(loc.display());
-      }
+      let loc = new DisplayLocation(Obj); 
+      let locCard = loc.display()
+        if(locCard){
+          contentArea.appendChild(locCard);
+        } 
+       
     });
   }
 
