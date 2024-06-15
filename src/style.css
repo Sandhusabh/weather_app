@@ -9,21 +9,28 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; 
+  background-color: #222831;
+}
+
+.condition{
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .container{
   width: 80vw;
-  height: 100vh;
+  height: 90vh;
   /* background-color: grey; */
   display: grid; 
   grid-template-columns: 3fr 1fr; 
   /* align-items: center; */
   /* justify-items: center; */
-  background-image: url('./images/sunny.jpg');
+  /* background-image: url('./images/sunny.jpg'); */
   background-position: center;
   background-repeat: no-repeat;
-  background-size:cover;
-  padding: 3%;
+  background-size:cover; 
+  padding: 0 3%;
+  border-radius: 20px;
 }
 
 .mainContent{
@@ -37,6 +44,8 @@ body {
   width: 100%;
   height: 100%; 
   padding-right: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .upperDiv{
@@ -79,10 +88,10 @@ body {
 }
  
 .lowerdiv{
-  display: flex;
+  display: flex; 
   width: 100%;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   background-color: white;
   opacity: 90%;
@@ -91,9 +100,36 @@ body {
    
 }
 
-.input{
+.lowerdiv span{
   display: flex;
-  background-color: gray ; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 15px;
+}
+.input{
+  display: flex; 
+  gap: 10px;
+}
+
+.input > input {
+  padding: 10px;
+  border: none;
+  border-radius: 10px; 
+  font-size: 18px;
+}
+
+.lowerdiv > span > h1 {
+  text-transform: uppercase;
+  font-weight: 600
+}
+
+.input > button{
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: #222831;
+  color: whitesmoke;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
 .extraContent{
@@ -107,19 +143,66 @@ body {
 #content{
   /* background-color: red; */
   display: flex;  
-  flex-direction: column-reverse; 
-  gap: 1%;
+  flex-direction: column-reverse;  
+  gap: 4%;
   width: 100%;
   height: 100%;
 }
 
 .card{ 
-  padding: 4%;
+  padding: 5%;
   background-color: white;
-  opacity: 90%;
+  opacity: 95%;
   height: 100%;
   width: 100%; 
   border: 1px solid white;
-  border-radius: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; 
+
+  }
+
+.cityContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
 }
 
+.city-data div{
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  line-height: 10px;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
+}
+
+.city-data div span{
+  /* justify-self: start; */
+  line-height: 13px;
+  width: 80px;
+ 
+}
+
+.city-data div img{
+  /* justify-self: start; */
+  height: 6.5vh;
+  width: 3vw;
+}
+
+
+.card .temperature{
+  text-transform: uppercase;
+  /* font-weight: 600; */
+  font-size: 4rem;
+}
+
+.card .city-name{
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1rem;
+}

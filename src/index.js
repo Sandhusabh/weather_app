@@ -4,7 +4,8 @@ import "./style.css";
 import "./style.scss"
 class WeatherApp {
   constructor() {
-    this.locations = ["Abbotsford, BC", "Surrey", "Surrey", "Surrey", "Makhu"];
+    this.locations = ["Abbotsford, BC", "Hope, BC", "Calgary, AB", "Makhu"];
+    this.tempUnit = 'F'
   }
 
   addLocation(location) {
@@ -17,9 +18,18 @@ class WeatherApp {
     }
   }
 
+  toggleTempUnit(){
+    if (this.tempUnit === 'C') {
+        this.tempUnit = 'F'
+    } else {
+      this.tempUnit = 'C'
+    }
+  }
+
   async create() {
     await this.render();
     this.processInput();
+    this.processTempToggle();
   }
 
   async render() {
@@ -32,7 +42,7 @@ class WeatherApp {
     // const mainCityContainer = document.getElementById("mainCityContainer");
     contentArea.innerText = ""; 
     weatherData.forEach((Obj) => {
-      let loc = new DisplayLocation(Obj); 
+      let loc = new DisplayLocation(Obj, this.tempUnit); 
       let locCard = loc.display()
         if(locCard){
           contentArea.appendChild(locCard);
@@ -51,6 +61,14 @@ class WeatherApp {
     submitButton.addEventListener("click", async (e) => {
       let userInput = this.getUserInput();
       this.addLocation(userInput);
+      this.render();
+    });
+  }
+
+  processTempToggle(){
+    const toggleButton = document.getElementById("switcher-2");
+    toggleButton.addEventListener("click", async (e) => { 
+      this.toggleTempUnit()
       this.render();
     });
   }
@@ -85,6 +103,9 @@ class WeatherApp {
       temp_f: data.current.temp_f,
       condition: data.current.condition,
       last_updated: data.current.last_updated,
+      wind_mph : data.current.wind_mph,
+      humidity: data.current.humidity,
+      precip : data.current.precip_mm,
       obj_index: this.getIndex(loc),
     };
     return cityObj;
